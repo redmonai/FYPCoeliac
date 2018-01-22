@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DietInfoScreen" />
+        <activity android:name=".cd_info_screen" />
+        <activity android:name=".LabellingInfoScreen" />
+        <activity android:name=".OatsInfoScreen" />
+        <activity android:name=".DisclaimerScreen" />
+        <activity android:name=".CDInfoScreen"></activity>
     </application>
 
 </manifest>

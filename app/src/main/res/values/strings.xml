@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">FYPCoeliac</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="coeliac_info">Coeliac Disease</string>
+    <string name="gf_diet">Gluten Free Diet</string>
+    <string name="labelling_info">Labelling</string>
+    <string name="gf_oats">Gluten Free Oats</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="gf_diet_info">There are many reasons for following a gluten free diet, including: \n
+        \n•\tCoeliac disease \n•\tNon-coeliac gluten sensitivity \n•\tWheat or gluten allergy
+        \n•\tIrritable Bowel Syndrome \n•\tAutoimmune diseases, including rheumatoid arthritis
+        and multiple sclerosis \n•\tPersonal choice</string>
+    <string name="coeliac_info_text">Coeliac disease is an auto-immune disease causing a reaction to
+        gluten, a protein found in wheat, barley and rye. Sufferers react abnormally to ingesting
+        gluten, causing the intestine to become inflamed and damaged. \n\nSymptoms may include:
+        \n•\tDiarrhoea \n•\tConstipation \n•\tBloating \n•\tChronic fatigue \n•\tAnaemia  \n•\tFailure
+        to thrive in children \n•\tWeight loss \n•\tMouth ulcers \n•\tDepression \n•\tInfertility \n
+        \nPresentation of the disease varies from patient to patient, and some may present no symptoms
+        at all. \n\nDiagnosis of coeliac disease requires a blood test, followed by an intestinal
+        biopsy during a gastroscopy. It is possible for a blood test to give a false negative.
+        \n\nThe only treatment for coeliac disease is a lifelong gluten free diet.</string>
+    <string name="labelling_info_text">The most up-to-date information about what a food contains
+        will always be found on its label. While the food list aims to keep an accurate listing
+        of gluten free products, ingredients may change before the list can be updated. Therefore,
+        coeliacs are always advised to check the label of any food products before they consume it.\n
+        \nA “gluten free” label on food indicates that the product contains less than 20 parts per
+        million of gluten. This is a level deemed safe for coeliacs to consume. \n
+        \nThe Crossed Grain is an internationally recognised symbol that identifies a food product
+        as being gluten free.\n\n When checking ingredients lists, it is important to
+        check for many hidden and obvious sources of gluten: \n•\tWheat, and any derivatives \n•\tRye
+        \n•\tBarley \n•\tOats \n•\tSpelt \n•\tMalt, and any derivatives (excluding Malt Vinegar)\n
+        \nIf a product “may contain” any of the above ingredients, coeliacs are advised not to consume them.</string>
+    <string name="gf_oats_info_text">Oats do not contain gluten but may be contaminated by gluten
+        containing grains during processing. Coeliacs should only consume oats that are labelled as
+        gluten free.\n\nA minority of coeliacs are still unable to tolerate gluten free oats and so
+        must exclude them from their diet.</string>
+    <string name="disclaimer_text">The information provided in this application is as up-to-date as
+        possible, but the most up-to-date information will always be found on a product’s ingredients
+        label. Always check the label of a food product before consuming it.</string>
 </resources>
