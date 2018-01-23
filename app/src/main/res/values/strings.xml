@@ -1,16 +1,32 @@
 <resources>
     <string name="app_name">FYPCoeliac</string>
+
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+
+    <string name="app_title">Coeliac Scanner</string>
+    <!-- Section titles -->
+    <string name="home">Home</string>
     <string name="coeliac_info">Coeliac Disease</string>
     <string name="gf_diet">Gluten Free Diet</string>
     <string name="labelling_info">Labelling</string>
     <string name="gf_oats">Gluten Free Oats</string>
     <string name="disclaimer">Disclaimer</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Gluten Free Diet</item>
+        <item>Coeliac Disease</item>
+        <item>Labelling</item>
+        <item>Gluten Free Oats</item>
+        <item>Disclaimer</item>
+    </string-array>
+
+    <!-- Info pages text -->
     <string name="gf_diet_info">There are many reasons for following a gluten free diet, including: \n
         \n•\tCoeliac disease \n•\tNon-coeliac gluten sensitivity \n•\tWheat or gluten allergy
         \n•\tIrritable Bowel Syndrome \n•\tAutoimmune diseases, including rheumatoid arthritis
-        and multiple sclerosis \n•\tPersonal choice</string>
+        and multiple sclerosis \n•\tPersonal choice\n\n Gluten is a protein found in wheat, barley, and rye.\n</string>
     <string name="coeliac_info_text">Coeliac disease is an auto-immune disease causing a reaction to
         gluten, a protein found in wheat, barley and rye. Sufferers react abnormally to ingesting
         gluten, causing the intestine to become inflamed and damaged. \n\nSymptoms may include:
@@ -38,4 +54,10 @@
     <string name="disclaimer_text">The information provided in this application is as up-to-date as
         possible, but the most up-to-date information will always be found on a product’s ingredients
         label. Always check the label of a food product before consuming it.</string>
+    <string name="title_activity_main_navdrawer">main_navdrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

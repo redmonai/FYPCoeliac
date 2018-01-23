@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/gf_diet"
+            android:title="@string/gf_diet" />
+        <item
+            android:id="@+id/coeliac_info"
+            android:title="@string/coeliac_info" />
+        <item
+            android:id="@+id/labelling_info"
+            android:title="@string/labelling_info" />
+        <item
+            android:id="@+id/gf_oats"
+            android:title="@string/gf_oats" />
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/disclaimer"
+                android:title="@string/disclaimer" />
+        </menu>
+    </item>
+
+</menu>
