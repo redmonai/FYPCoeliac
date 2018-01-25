@@ -9,19 +9,20 @@
     tools:showIn="@layout/app_bar_main_navdrawer">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/searchButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="sendSearch"
         android:text="@android:string/search_go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar1" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/searchBar1"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginEnd="24dp"
@@ -32,11 +33,11 @@
         android:hint="@string/search_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/searchIcon1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/searchIcon1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

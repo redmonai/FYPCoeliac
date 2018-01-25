@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.EditText;
 
 public class main_navdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +23,7 @@ public class main_navdrawer extends AppCompatActivity
     private View navHeader;
     private Toolbar toolbar;
     private FloatingActionButton fab;
+    private EditText editText;
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -71,6 +71,8 @@ public class main_navdrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        editText = (EditText) findViewById(R.id.searchBar1);
 
     }
 
@@ -136,4 +138,16 @@ public class main_navdrawer extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //called when user taps the search button
+    public void sendSearch(View view)
+    {
+        System.out.println("sendSearch method");
+        Intent intent = new Intent(this, search_results.class);
+        String searchString = editText.getText().toString();
+        System.out.println("Stored string: " + searchString);
+        intent.putExtra("search-string", searchString);
+        startActivity(intent);
+    }
+
 }
