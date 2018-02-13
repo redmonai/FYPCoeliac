@@ -51,13 +51,14 @@
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/results"
         android:layout_width="378dp"
         android:layout_height="437dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="130dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
@@ -66,16 +67,43 @@
         app:layout_constraintVertical_bias="0.076" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="133dp"
-        android:layout_height="28dp"
+        android:id="@+id/resultsCount"
+        android:layout_width="82dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="number of results"
+        android:text="results"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintTop_toBottomOf="@+id/results" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="349dp"
+        android:layout_height="386dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/prodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: " />
+
+        <TextView
+            android:id="@+id/prodBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brand: " />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

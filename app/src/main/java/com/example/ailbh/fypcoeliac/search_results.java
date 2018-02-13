@@ -2,6 +2,10 @@ package com.example.ailbh.fypcoeliac;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,7 +18,10 @@ import java.util.ArrayList;
 public class search_results extends AppCompatActivity {
     private String search;
     private DatabaseReference mDatabase;
-    private ArrayList products;
+    private ArrayList<Product> products;
+    private ListView results;
+    private ArrayAdapter<Product> adapter;
+    private TextView textView;
 
     public static final int NUM_PRODUCTS = 469;
 
@@ -29,50 +36,67 @@ public class search_results extends AppCompatActivity {
 
         System.out.println("Passed string: " + search);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ref = mDatabase.child("");
-        System.out.println("DatabaseReference " + ref.toString());
-        int i = 0;
-        FirebaseDatabase.getInstance().getReference().child(Integer.toString(i))
-                .addListenerForSingleValueEvent(new ValueEventListener()
-                {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Product newProd = new Product();
-                            newProd.prodName = dataSnapshot.child("Product").getValue(String.class);
-                            newProd.brand = dataSnapshot.child("Brand").getValue(String.class);
-                            newProd.category = dataSnapshot.child("Food Category").getValue(String.class);
-                            newProd.type = dataSnapshot.child("Type of Food").getValue(String.class);
-                            newProd.size = dataSnapshot.child("Size").getValue(String.class);
+        results = findViewById(R.id.results);
+        products = new ArrayList();
 
-                            //snapshot.getValue(Product.class);
-                            System.out.println(newProd.prodName);
+        adapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, products);
+        results.setAdapter(adapter);
+
+        getData();
+
+        // Pass number of results to the screen
+        //textView = findViewById(R.id.resultsCount);
+        //textView.setText(products.size() + " results");
+    }
+
+    public void getData()
+    {
+        products = new ArrayList<Product>();
+        int i = 0;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child(Integer.toString(i)).addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Product newProd = new Product();
+                    newProd.prodName = dataSnapshot.child("Product").getValue(String.class);
+                    newProd.brand = dataSnapshot.child("Brand").getValue(String.class);
+                    newProd.category = dataSnapshot.child("Food Category").getValue(String.class);
+                    newProd.type = dataSnapshot.child("Type of Food").getValue(String.class);
+                    newProd.size = dataSnapshot.child("Size").getValue(String.class);
+                    System.out.println("From firebase: " + newProd.prodName);
+
+                    //check if the product pulled from firebase matches the search string and,
+                    // if not present in list, adds it
+                        if ((newProd.prodName.contains(search) || newProd.brand.contains(search))
+                                && !products.contains(newProd))
+                        {
+                            products.add(newProd);
+                            adapter.notifyDataSetChanged();
+                            System.out.println("added to list!");
                         }
                     }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
+                    System.out.println("end of for loop");
+                    System.out.println("ArrayList size is: " + products.size());
+                    for (int j = 0; j < products.size(); j++)
+                    {
+                        System.out.println("Array element " + j + " is " + products.get(j).prodName);
                     }
-                });
-
-        products = new ArrayList<Product>();
+                    //draw ListView here???
 
 
-//        ref.child("messages").on("value", function(snapshot) {
-//            console.log("There are "+snapshot.numChildren()+" messages");
-//        })
+//                    textView = findViewById(R.id.resultsCount);
+//                    textView.setText(products.size() + " results");
+                }
 
-
-
-
-
-
-
-
-//        // Capture the layout's TextView and set the string as its text
-//        TextView textView = findViewById(R.id.textView);
-//        textView.setText(search);
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                Log.d("READ_FAILED", "Read failed");
+            }
+        });
     }
+
 }
