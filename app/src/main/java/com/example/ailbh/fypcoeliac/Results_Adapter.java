@@ -1,6 +1,7 @@
 package com.example.ailbh.fypcoeliac;
 
 import android.app.Activity;
+import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,38 +19,30 @@ import java.util.List;
 
 public class Results_Adapter extends ArrayAdapter<Product>
 {
-    private ArrayList<Product> results;
-    private final Activity search_results;
-    private final ListView results_list;
 
-    public Results_Adapter(Activity search_results, ArrayList<Product> results, ListView results_list)
+    public Results_Adapter(Context context, int resource, List<Product> results)
     {
-        super(search_results, R.layout.activity_search_results, (List<Product>) search_results);
-
-        this.search_results = search_results;
-        this.results = results;
-        this.results_list = results_list;
+        super(context, resource, results);
     }
 
+    @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        // get the product for this position
-        Product current = getItem(position);
-
-        // check if an existing view is being reused, otherwise inflate the view
         if (convertView == null)
         {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_search_results, parent, false);
+            convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.productrow, parent, false);
         }
-        // lookup view for data population
-        TextView prodName = (TextView) convertView.findViewById(R.id.prodName);
-        TextView prodBrand = (TextView) convertView.findViewById(R.id.prodBrand);
 
-        // populate the data into the template view using the data object
-        prodName.setText(current.prodName);
-        prodBrand.setText(current.brand);
+        TextView productNameView = (TextView) convertView.findViewById(R.id.productNameView);
+        TextView productBrandView = (TextView) convertView.findViewById(R.id.productBrandView);
 
-        //return the completed view to render on screen
+        Product product = getItem(position);
+
+        productNameView.setVisibility(View.VISIBLE);
+        productNameView.setText(product.name);
+        productBrandView.setVisibility(View.VISIBLE);
+        productBrandView.setText(product.brand);
+
         return convertView;
     }
 

@@ -143,7 +143,7 @@ public class main_navdrawer extends AppCompatActivity
     public void sendSearch(View view)
     {
         Intent intent = new Intent(this, search_results.class);
-        String searchString = editText.getText().toString();
+        String searchString = editText.getText().toString().toLowerCase();
         System.out.println("Stored string: " + searchString);
         intent.putExtra("search-string", searchString);
         startActivity(intent);

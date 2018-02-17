@@ -5,7 +5,7 @@ package com.example.ailbh.fypcoeliac;
  */
 
 public class Product {
-    public String prodName;
+    public String name;
     public String brand;
     public String category;
     public String type;
@@ -16,9 +16,9 @@ public class Product {
 
     }
 
-    public Product (String prodName, String brand, String category, String type, String size)
+    public Product (String name, String brand, String category, String type, String size)
     {
-        this.prodName = prodName;
+        this.name = name;
         this.brand = brand;
         this.category = category;
         this.type = type;
