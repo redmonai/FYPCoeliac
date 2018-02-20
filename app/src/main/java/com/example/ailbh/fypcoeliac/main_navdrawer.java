@@ -144,7 +144,7 @@ public class main_navdrawer extends AppCompatActivity
     {
         Intent intent = new Intent(this, search_results.class);
         String searchString = editText.getText().toString().toLowerCase();
-        System.out.println("Stored string: " + searchString);
+        System.out.println("first search string: " + searchString);
         intent.putExtra("search-string", searchString);
         startActivity(intent);
     }

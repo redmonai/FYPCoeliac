@@ -1,9 +1,11 @@
 package com.example.ailbh.fypcoeliac;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,13 +22,14 @@ public class search_results extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseRef;
     private String search;
-    private ArrayList<Product> products;
+    private List<Product> resultsList;
     private ListView resultsListView;
+    private int resultsCount;
     private Results_Adapter resultsAdapter;
-//    private ArrayAdapter<Product> adapter;
-    private TextView textView;
-    private TextView searchBar;
+    private TextView resultsCountText;
+    private EditText searchBar;
     public static final int NUM_PRODUCTS = 469;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,74 +37,67 @@ public class search_results extends AppCompatActivity {
         setContentView(R.layout.activity_search_results);
 
         //initialise views
-        searchBar = (TextView) findViewById(R.id.searchBar2);
+        searchBar = (EditText) findViewById(R.id.searchBar2);
         resultsListView = findViewById(R.id.resultsListView);
 
         //Get the Intent that started this activity and extract the string
         Bundle extras = getIntent().getExtras();
         search = extras.getString("search-string").toLowerCase();
         searchBar.setText(search);
-        System.out.println("Passed string: " + search);
 
         // Initialise results listview and its adapter
-        List<Product> resultsList = new ArrayList<>();
+        resultsList = new ArrayList<>();
         resultsAdapter = new Results_Adapter(this, R.layout.productrow, resultsList);
         resultsListView.setAdapter(resultsAdapter);
-
-        //products = new ArrayList();
-
-//        adapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, products);
-//        resultsListView.setAdapter(adapter);
+        resultsCount = 0;
+        resultsCountText = findViewById(R.id.resultsCount);
 
         getData();
-
-        textView = findViewById(R.id.resultsCount);
-        textView.setText(resultsList.size() + " results");
-
-        // Pass number of results to the screen
-        //textView = findViewById(R.id.resultsCount);
-        //textView.setText(products.size() + " results");
     }
 
     public void getData()
     {
-        products = new ArrayList<Product>();
-        int i = 0;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference();
-
-        mDatabaseRef.child(Integer.toString(i)).addListenerForSingleValueEvent(new ValueEventListener()
+        for (int i = 0; i < NUM_PRODUCTS; i++)
         {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Product newProd = dataSnapshot.getValue(Product.class);
-                    System.out.println("From firebase: " + newProd.name);
+            mDatabaseRef.child(Integer.toString(i)).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Product newProd = dataSnapshot.getValue(Product.class);
 
-                    //check if the product pulled from firebase matches the search string and,
-                    // if not present in list, adds it
-                    //string.equalsIgnoreCase(search)
-                    if (((newProd.name.toLowerCase()).contains(search))
-                            || ((newProd.brand.toLowerCase()).contains(search))
-                            && (!products.contains(newProd)))
-//                    if ((StringUtils.containsIgnoreCase(newProd.name, search))
-//                            ||
-//                            )
-                    {
-                        products.add(newProd);
-                        resultsAdapter.add(newProd);
-                        //adapter.notifyDataSetChanged();
-                        System.out.println("added to list!");
+                        //check if the product pulled from firebase matches the search string and,
+                        // if not present in list, adds it
+                        if (((newProd.name.toLowerCase()).contains(search))
+                                || ((newProd.brand.toLowerCase()).contains(search))
+                                && (!resultsList.contains(newProd)))
+                        {
+                            resultsList.add(newProd);
+                            resultsAdapter.add(newProd);
+                        }
+
                     }
+                    resultsCount = resultsList.size();
+                    resultsCountText.setText(resultsCount + " results");
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-                Log.d("READ_FAILED", "Read failed");
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("READ_FAILED", "Read failed");
+                }
+            });
+        }
+    }
+
+    //called when user taps the search button
+    public void sendSearch(View view)
+    {
+        Intent intent = new Intent(this, search_results.class);
+        String searchString = searchBar.getText().toString().toLowerCase();
+        intent.putExtra("search-string", searchString);
+        System.out.println("new search string: " + searchString);
+        startActivity(intent);
     }
 
 }
