@@ -63,15 +63,15 @@ public class search_results extends AppCompatActivity {
         {
             mDatabaseRef.child(Integer.toString(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Product newProd = dataSnapshot.getValue(Product.class);
-
                         //check if the product pulled from firebase matches the search string and,
-                        // if not present in list, adds it
-                        if (((newProd.name.toLowerCase()).contains(search))
-                                || ((newProd.brand.toLowerCase()).contains(search))
-                                && (!resultsList.contains(newProd)))
+                        Product newProd = dataSnapshot.getValue(Product.class);
+                        // if not present in list, add it
+                        if ((((newProd.name.toLowerCase()).contains(search))
+                                || ((newProd.brand.toLowerCase()).contains(search)))
+                                && (!listContains(resultsList, newProd)))
                         {
                             resultsList.add(newProd);
                             resultsAdapter.add(newProd);
@@ -98,6 +98,19 @@ public class search_results extends AppCompatActivity {
         intent.putExtra("search-string", searchString);
         System.out.println("new search string: " + searchString);
         startActivity(intent);
+    }
+
+    //checks the results list to see if the product has already been added
+
+    public boolean listContains(List<Product> products, Product newProd)
+    {
+        for (int i = 0; i < products.size(); i++)
+        {
+            Product temp = products.get(i);
+            if (temp.name.equals(newProd.name) || temp.brand.equals(newProd.brand))
+                return true;
+        }
+        return false;
     }
 
 }
