@@ -13,7 +13,6 @@
         <activity android:name=".LabellingInfoScreen" />
         <activity android:name=".OatsInfoScreen" />
         <activity android:name=".DisclaimerScreen" />
-        <activity android:name=".CDInfoScreen" />
         <activity
             android:name=".main_navdrawer"
             android:label="@string/app_title"
