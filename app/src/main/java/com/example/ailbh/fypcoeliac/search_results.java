@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class search_results extends AppCompatActivity {
@@ -59,21 +60,19 @@ public class search_results extends AppCompatActivity {
     {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference();
-        for (int i = 0; i < NUM_PRODUCTS; i++)
-        {
-            mDatabaseRef.child(Integer.toString(i)).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        mDatabaseRef.child("food").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Product newProd = snapshot.getValue(Product.class);
                         //check if the product pulled from firebase matches the search string and,
-                        Product newProd = dataSnapshot.getValue(Product.class);
                         // if not present in list, add it
                         if ((((newProd.name.toLowerCase()).contains(search))
                                 || ((newProd.brand.toLowerCase()).contains(search)))
                                 && (!listContains(resultsList, newProd)))
                         {
-                            resultsList.add(newProd);
                             resultsAdapter.add(newProd);
                         }
 
@@ -87,7 +86,7 @@ public class search_results extends AppCompatActivity {
                     Log.d("READ_FAILED", "Read failed");
                 }
             });
-        }
+
     }
 
     //called when user taps the search button
