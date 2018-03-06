@@ -1,3 +1,89 @@
 <resources>
     <string name="app_name">FYPCoeliac</string>
+
+    <string name="search_field">Enter product name</string>
+
+    <string name="app_title">Coeliac Scanner</string>
+    <!-- Section titles -->
+    <string name="home">Home</string>
+    <string name="coeliac_info">Coeliac Disease</string>
+    <string name="gf_diet">Gluten Free Diet</string>
+    <string name="labelling_info">Labelling</string>
+    <string name="gf_oats">Gluten Free Oats</string>
+    <string name="disclaimer">Disclaimer</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Gluten Free Diet</item>
+        <item>Coeliac Disease</item>
+        <item>Labelling</item>
+        <item>Gluten Free Oats</item>
+        <item>Disclaimer</item>
+    </string-array>
+
+    <string-array name="food_categories">
+        <item>Baking Ingredients &amp; Gluten Free Flours</item>
+        <item>Biscuits</item>
+        <item>Gluten Free Breads</item>
+        <item>Cakes &amp; Desserts</item>
+        <item>Cereals</item>
+        <item>Confectionary</item>
+        <item>Crackers</item>
+        <item>Dairy &amp; Non Dairy Alternatives</item>
+        <item>Drinks-Alcoholic</item>
+        <item>Drinks-Non Alcoholic</item>
+        <item>Fats &amp; Oils</item>
+        <item>Fish Products</item>
+        <item>Herbs, Spices &amp; Seasoning Mixes</item>
+        <item>Ice Cream &amp; Frozen Treats</item>
+        <item>Meal Accompaniments</item>
+        <item>Meat Products</item>
+        <item>Medicines &amp; Supplements</item>
+        <item>Pasta, Noodles &amp; Rice</item>
+        <item>Pizza &amp; Tortillas</item>
+        <item>Preserves, Nut Butters &amp; Spreads</item>
+        <item>Pure OAT Gluten Free Products</item>
+        <item>Ready Meals</item>
+        <item>Sauces</item>
+        <item>Soups</item>
+        <item>Supermarkets</item>
+        <item>Vegetables, Potato &amp; Fruit Products</item>
+        <item>Gluten Free Bakeries</item>
+    </string-array>
+
+    <!-- Info pages text -->
+    <string name="gf_diet_info">There are many reasons for following a gluten free diet, including:\n
+        \n\t\t• Coeliac disease\n\t\t• Non-coeliac gluten sensitivity \n\t\t• Wheat or gluten allergy\n\t\t• Irritable
+        Bowel Syndrome\n\t\t• Autoimmune diseases, including \n\t\t\t rheumatoid arthritis and multiple
+        \n\t\t\t sclerosis\n\t\t• Personal choice\n\nGluten is a protein found in wheat, barley, and rye.\n\n</string>
+    <string name="coeliac_info_text">Coeliac disease is an auto-immune disease causing a reaction to
+        gluten, a protein found in wheat, barley and rye. Sufferers react abnormally to ingesting
+        gluten, causing the intestine to become inflamed and damaged.\n\nSymptoms may include:
+        \n\t\t• Diarrhoea\n\t\t• Constipation\n\t\t• Bloating\n\t\t• Chronic fatigue\n\t\t• Anaemia
+        \n\t\t• Failure to thrive in children\n\t\t• Weight loss\n\t\t• Mouth ulcers\n
+        \t\t• Depression\n\t\t• Infertility\n\nPresentation of the disease varies from patient to
+        patient, and some may present no symptoms at all.\n\nDiagnosis of coeliac disease requires a blood test, followed by an intestinal
+        biopsy during a gastroscopy. It is possible for a blood test to give a false negative result.\n
+        \nThe only treatment for coeliac disease is a lifelong gluten free diet.\n\n</string>
+    <string name="labelling_info_text">A “gluten free” label on food indicates that the product
+        contains less than 20 parts per million of gluten. This is a level deemed safe for coeliacs
+        to consume.\n\nThe Crossed Grain is an internationally recognised symbol that identifies a
+        food product as being gluten free.\n\nWhen checking ingredients lists, it is important to
+        check for many hidden and obvious sources of gluten:\n\t\t• Wheat, and any derivatives\n\t\t• Rye
+        \n\t\t• Barley\n\t\t• Oats\n\t\t• Spelt\n\t\t• Malt, and any derivatives (excluding \n\t\t\tMalt Vinegar)\n
+        \nIf a product “may contain” any of the above ingredients, coeliacs are advised not to consume them.\n
+        \nThe most up-to-date information about what a food contains will always be found on its label.
+        While the food list aims to keep an accurate listing of gluten free products, ingredients may
+        change before the list can be updated. Therefore, coeliacs are always advised to check the
+        label of any food products before they consume it.\n\n</string>
+    <string name="gf_oats_info_text">Oats do not contain gluten but may be contaminated by gluten
+        containing grains during processing. Coeliacs should only consume oats that are labelled
+        gluten free.\n\nA minority of coeliacs are still unable to tolerate gluten free oats and so
+        must exclude them from their diet.\n\n</string>
+    <string name="disclaimer_text">The information provided in this application is as up-to-date as
+        possible, but the most up-to-date information will always be found on a product’s ingredients
+        label. \n\n<b>Always check the label of a food product before consuming it.\n\n</b></string>
+    <string name="title_activity_main_navdrawer">main_navdrawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
