@@ -32,11 +32,11 @@ public class ProductPage extends AppCompatActivity {
         productType = findViewById(R.id.productType);
 
         Bundle extras = getIntent().getExtras();
-        productLabel.setText((extras.getString("PRODUCT_BRAND") + " " + extras.getString("PRODUCT_NAME")));
-        productName.setText("Name: " + extras.getString("PRODUCT_NAME"));
-        productBrand.setText("Brand: " + extras.getString("PRODUCT_BRAND"));
-        productType.setText("Type: " + extras.getString("PRODUCT_TYPE"));
-        productCategory.setText("Category: " + extras.getString("PRODUCT_CAT"));
-        productSize.setText("Size: " + extras.getString("PRODUCT_SIZE"));
+        productLabel.setText((extras.getString("PRODUCT_BRAND") + " - " + extras.getString("PRODUCT_NAME")));
+        productName.setText(extras.getString("PRODUCT_NAME"));
+        productBrand.setText(extras.getString("PRODUCT_BRAND"));
+        productType.setText(extras.getString("PRODUCT_TYPE"));
+        productCategory.setText(extras.getString("PRODUCT_CAT"));
+        productSize.setText(extras.getString("PRODUCT_SIZE"));
     }
 }

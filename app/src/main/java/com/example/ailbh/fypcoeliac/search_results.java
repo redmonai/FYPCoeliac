@@ -30,8 +30,6 @@ public class search_results extends AppCompatActivity {
     private Results_Adapter resultsAdapter;
     private TextView resultsCountText;
     private EditText searchBar;
-    public static final int NUM_PRODUCTS = 469;
-    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

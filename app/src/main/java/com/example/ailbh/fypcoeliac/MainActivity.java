@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                String category = categories[position];
+                String category = categories[position].trim();
                 Intent intent =  new Intent(getApplicationContext(), CategoryActivity.class);
                 intent.putExtra("CATEGORY", category);
                 startActivity(intent);
