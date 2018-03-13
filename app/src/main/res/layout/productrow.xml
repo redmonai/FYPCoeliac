@@ -9,16 +9,16 @@
 
     <TextView
         android:id="@+id/productNameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         tools:text="Product Name" />
 
     <TextView
         android:id="@+id/productBrandView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/darker_gray"

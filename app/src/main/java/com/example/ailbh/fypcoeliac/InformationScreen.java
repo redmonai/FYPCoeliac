@@ -11,11 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InformationScreen extends AppCompatActivity {
- //   private TextView textView;
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, String> listDataChild;
+    private static final String TAG = "InformationScreen";
+
+    private ExpandableListAdapter listAdapter;
+    private ExpandableListView expListView;
+    private List<String> listDataHeader;
+    private HashMap<String, String> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

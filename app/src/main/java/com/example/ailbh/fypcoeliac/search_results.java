@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class search_results extends AppCompatActivity {
+    private static final String TAG = "search_results";
+
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseRef;
     private String search;
@@ -29,8 +32,6 @@ public class search_results extends AppCompatActivity {
     private Results_Adapter resultsAdapter;
     private TextView resultsCountText;
     private EditText searchBar;
-    public static final int NUM_PRODUCTS = 469;
-    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class search_results extends AppCompatActivity {
 
         //Get the Intent that started this activity and extract the string
         Bundle extras = getIntent().getExtras();
-        search = extras.getString("search-string").toLowerCase();
+        search = extras.getString("SEARCH_STRING").toLowerCase();
         searchBar.setText(search);
 
         // Initialise results listview and its adapter
@@ -54,6 +55,22 @@ public class search_results extends AppCompatActivity {
         resultsCountText = findViewById(R.id.resultsCount);
 
         getData();
+
+        resultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product product = resultsList.get(position);
+
+                Intent intent =  new Intent(getApplicationContext(), ProductPage.class);
+                intent.putExtra("PRODUCT_NAME", product.name);
+                intent.putExtra("PRODUCT_BRAND", product.brand);
+                intent.putExtra("PRODUCT_CAT", product.category);
+                intent.putExtra("PRODUCT_SIZE", product.size);
+                intent.putExtra("PRODUCT_TYPE", product.type);
+
+                startActivity(intent);
+            }
+        });
     }
 
     public void getData()
@@ -94,8 +111,7 @@ public class search_results extends AppCompatActivity {
     {
         Intent intent = new Intent(this, search_results.class);
         String searchString = searchBar.getText().toString().toLowerCase();
-        intent.putExtra("search-string", searchString);
-        System.out.println("new search string: " + searchString);
+        intent.putExtra("SEARCH_STRING", searchString);
         startActivity(intent);
     }
 

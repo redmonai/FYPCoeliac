@@ -14,7 +14,7 @@
         android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coeliac Scanner"
+        android:text="Gluten Free Food Scanner"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textStyle="bold" />

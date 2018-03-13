@@ -3,7 +3,7 @@
 
     <string name="search_field">Enter product name</string>
 
-    <string name="app_title">Coeliac Scanner</string>
+    <string name="app_title">Gluten Free Food Scanner</string>
     <!-- Section titles -->
     <string name="home">Home</string>
     <string name="coeliac_info">Coeliac Disease</string>
@@ -19,6 +19,36 @@
         <item>Labelling</item>
         <item>Gluten Free Oats</item>
         <item>Disclaimer</item>
+    </string-array>
+
+    <string-array name="food_categories">
+        <item>Baking Ingredients &amp; Gluten Free Flours</item>
+        <item>Biscuits</item>
+        <item>Gluten Free Breads</item>
+        <item>Cakes &amp; Desserts</item>
+        <item>Cereals</item>
+        <item>Confectionary</item>
+        <item>Crackers</item>
+        <item>Dairy &amp; Non Dairy Alternatives</item>
+        <item>Drinks-Alcoholic</item>
+        <item>Drinks-Non Alcoholic</item>
+        <item>Fats &amp; Oils</item>
+        <item>Fish Products</item>
+        <item>Herbs, Spices &amp; Seasoning Mixes</item>
+        <item>Ice Cream &amp; Frozen Treats</item>
+        <item>Meal Accompaniments</item>
+        <item>Meat Products</item>
+        <item>Medicines &amp; Supplements</item>
+        <item>Pasta, Noodles &amp; Rice</item>
+        <item>Pizza &amp; Tortillas</item>
+        <item>Preserves, Nut Butters &amp; Spreads</item>
+        <item>Pure OAT Gluten Free Products</item>
+        <item>Ready Meals</item>
+        <item>Sauces</item>
+        <item>Soups</item>
+        <item>Supermarkets</item>
+        <item>Vegetables, Potato &amp; Fruit Products</item>
+        <item>Gluten Free Bakeries</item>
     </string-array>
 
     <!-- Info pages text -->
@@ -54,9 +84,6 @@
         possible, but the most up-to-date information will always be found on a product’s ingredients
         label. \n\n<b>Always check the label of a food product before consuming it.\n\n</b></string>
     <string name="title_activity_main_navdrawer">main_navdrawer</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 </resources>
