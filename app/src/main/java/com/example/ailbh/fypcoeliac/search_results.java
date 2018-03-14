@@ -21,6 +21,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class search_results extends AppCompatActivity {
+    private static final String TAG = "search_results";
+
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseRef;
     private String search;

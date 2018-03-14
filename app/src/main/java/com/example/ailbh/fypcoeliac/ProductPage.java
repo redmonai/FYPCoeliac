@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 public class ProductPage extends AppCompatActivity {
 
+    private static final String TAG = "ProductPage";
+
     private String name;
     private String brand;
     private String type;

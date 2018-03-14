@@ -20,6 +20,8 @@ import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
 
+    private static final String TAG = "categoryAcivity";
+
     private String category;
     private TextView categoryLabel;
     private FirebaseDatabase mFirebaseDatabase;

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
+    private static final String TAG = "MainActivity";
+
     private FloatingActionButton fab;
     private EditText editText;
     private String[] categories;
@@ -53,12 +55,19 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-        //called when user taps the search button
+    //called when user taps the search button
     public void sendSearch(View view)
     {
         Intent intent = new Intent(this, search_results.class);
         String searchString = editText.getText().toString().toLowerCase();
         intent.putExtra("SEARCH_STRING", searchString);
+        startActivity(intent);
+    }
+
+    //called when user taps the scan ingredients button
+    public void scanIngredient(View view)
+    {
+        Intent intent = new Intent(this, scanIngredient.class);
         startActivity(intent);
     }
 

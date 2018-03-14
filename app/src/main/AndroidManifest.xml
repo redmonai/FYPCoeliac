@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ailbh.fypcoeliac">
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -9,22 +11,11 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/CoeliacAppTheme">
-        <activity android:name=".DietInfoScreen" />
-        <activity android:name=".LabellingInfoScreen" />
-        <activity android:name=".OatsInfoScreen" />
-        <activity android:name=".DisclaimerScreen" />
-        <activity
-            android:name=".main_navdrawer"
-            android:label="@string/app_title"
-            android:theme="@style/CoeliacAppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".search_results" />
         <activity android:name=".InformationScreen" />
+        <activity android:name=".ProductPage" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".scanIngredient"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProductPage" />
-        <activity android:name=".CategoryActivity"></activity>
+        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="ocr"/>
     </application>
 
 </manifest>
