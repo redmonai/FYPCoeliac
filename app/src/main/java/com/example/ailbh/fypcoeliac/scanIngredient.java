@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -28,7 +31,10 @@ public class scanIngredient extends AppCompatActivity {
 
     private CameraSource mCameraSource;
     private SurfaceView mCameraView;
+    private CameraSource.PictureCallback jpegCallback;
+
     private TextView mTextView;
+//    private Button takePictureButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +42,40 @@ public class scanIngredient extends AppCompatActivity {
         setContentView(R.layout.activity_scan_ingredient);
 
         mCameraView = findViewById(R.id.surfaceView);
+
         mTextView = findViewById(R.id.text_view);
+        mTextView.setMovementMethod(new ScrollingMovementMethod());
+//        takePictureButton = findViewById(R.id.takePictureButton);
 
         startCameraSource();
+
+//        takePictureButton.setOnClickListener(
+//                new View.OnClickListener(){
+//                    @Override
+//                    public void onClick(View v)
+//                    {
+//                        System.out.println("On click listener");
+//                        //mCameraSource.takePicture(null, jpegCallback);
+//
+//                    }
+//                }
+//        );
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode != requestPermissionID) {
+        if (requestCode != requestPermissionID)
+        {
             Log.d(TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             return;
         }
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            try {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            try
+            {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                {
                     return;
                 }
                 mCameraSource.start(mCameraView.getHolder());
@@ -73,7 +97,7 @@ public class scanIngredient extends AppCompatActivity {
         }
         else
         {
-            //Initialize camerasource to use high resolution and set Autofocus on.
+            //Initialize camerasource
             //uses the phone's rear camera, resolution 1280*1024, autofocus on
             mCameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
@@ -86,14 +110,16 @@ public class scanIngredient extends AppCompatActivity {
              * Add call back to SurfaceView and check if camera permission is granted.
              * If permission is granted we can start our cameraSource and pass it to surfaceView
              */
-            mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            mCameraView.getHolder().addCallback(new SurfaceHolder.Callback()
+            {
                 @Override
-                public void surfaceCreated(SurfaceHolder holder) {
-                    try {
-
+                public void surfaceCreated(SurfaceHolder holder)
+                {
+                    try
+                    {
                         if (ActivityCompat.checkSelfPermission(getApplicationContext(),
-                                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
+                                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                        {
                             ActivityCompat.requestPermissions(scanIngredient.this,
                                     new String[]{Manifest.permission.CAMERA},
                                     requestPermissionID);
@@ -119,7 +145,8 @@ public class scanIngredient extends AppCompatActivity {
             });
 
             //Set the TextRecognizer's Processor.
-            textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
+            textRecognizer.setProcessor(new Detector.Processor<TextBlock>()
+            {
                 @Override
                 public void release() {
                 }
@@ -128,19 +155,30 @@ public class scanIngredient extends AppCompatActivity {
                  * Detect all the text from camera using TextBlock and the values into a stringBuilder
                  * which will then be set to the textView.
                  * */
+
+                // TO DO
+                // Make app only display words detected when they range from Ingredients to .
+                // Copy those words to an array
+                // Use the array to find forbidden phrases
+                // Make it stop looking after it detects ingredients
                 @Override
-                public void receiveDetections(Detector.Detections<TextBlock> detections) {
+                public void receiveDetections(Detector.Detections<TextBlock> detections)
+                {
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
                     if (items.size() != 0 ){
 
-                        mTextView.post(new Runnable() {
+                        mTextView.post(new Runnable()
+                        {
                             @Override
-                            public void run() {
+                            public void run()
+                            {
                                 StringBuilder stringBuilder = new StringBuilder();
-                                for(int i=0;i<items.size();i++){
+                                for(int i=0; i<items.size(); i++)
+                                {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
+                                    System.out.println(stringBuilder + "|");
                                 }
                                 mTextView.setText(stringBuilder.toString());
                             }
@@ -151,3 +189,4 @@ public class scanIngredient extends AppCompatActivity {
         }
     }
 }
+
