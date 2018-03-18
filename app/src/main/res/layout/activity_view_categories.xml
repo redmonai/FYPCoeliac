@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ailbh.fypcoeliac.InformationScreen">
+    tools:context="com.example.ailbh.fypcoeliac.ViewCategoriesActivity">
 
     <!-- Load the toolbar here -->
     <include
         android:id="@+id/include5"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="59dp" />
 
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
@@ -27,19 +27,34 @@
         android:background="@drawable/white_grey_border_top"
         app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
 
-    <!-- Load page content -->
-    <ExpandableListView
-        android:id="@+id/exLV"
-        android:layout_width="365dp"
-        android:layout_height="525dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/mainNav"
+    <!-- Load page objects -->
+    <ListView
+        android:id="@+id/CategoryListView"
+        android:layout_width="358dp"
+        android:layout_height="457dp"
+        android:layout_above="@+id/mainNav"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        android:transcriptMode="alwaysScroll"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="188dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/searchIcon1"
+        android:layout_alignStart="@+id/searchIcon1"
+        android:layout_below="@+id/searchButton1"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="View by Category"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include5" />
 
 </android.support.constraint.ConstraintLayout>

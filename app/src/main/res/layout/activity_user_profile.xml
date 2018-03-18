@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ailbh.fypcoeliac.InformationScreen">
+    tools:context="com.example.ailbh.fypcoeliac.UserProfile">
 
     <!-- Load the toolbar here -->
     <include
@@ -22,24 +22,47 @@
         android:layout_alignParentStart="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/white_grey_border_top"
         app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
 
     <!-- Load page content -->
-    <ExpandableListView
-        android:id="@+id/exLV"
-        android:layout_width="365dp"
-        android:layout_height="525dp"
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="326dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include5" />
+
+    <TextView
+        android:id="@+id/useremailText"
+        android:layout_width="326dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="useremail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+
+
+    <Button
+        android:id="@+id/signOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:text="Sign Out"
         app:layout_constraintBottom_toTopOf="@+id/mainNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

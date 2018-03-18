@@ -13,33 +13,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Load the navbar -->
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/mainNav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/white_grey_border_top"
+        app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
+
+    <!-- Load page content -->
+    <!-- Search bar -->
     <Button
-        android:id="@+id/searchButton1"
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="sendSearch"
         android:text="@android:string/search_go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include5" />
 
     <EditText
-        android:id="@+id/searchBar1"
+        android:id="@+id/searchBar"
         android:layout_width="225dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_above="@+id/CategoryListView"
         android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/searchButton"
+        android:layout_toRightOf="@+id/searchButton"
         android:ems="10"
         android:hint="@string/search_field"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/searchButton1"
-        app:layout_constraintStart_toEndOf="@+id/searchIcon1"
+        app:layout_constraintEnd_toStartOf="@+id/searchButton"
+        app:layout_constraintStart_toEndOf="@+id/searchIcon"
         app:layout_constraintTop_toBottomOf="@+id/include5" />
 
     <ImageView
-        android:id="@+id/searchIcon1"
+        android:id="@+id/searchIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,53 +64,41 @@
         app:layout_constraintTop_toBottomOf="@+id/include5"
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="60dp"
-        android:layout_height="56dp"
+    <!-- Search Results -->
+    <ListView
+        android:id="@+id/resultsListView"
+        android:layout_width="362dp"
+        android:layout_height="416dp"
+        android:layout_above="@+id/resultsCount"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_info" />
-
-    <ListView
-        android:id="@+id/CategoryListView"
-        android:layout_width="350dp"
-        android:layout_height="340dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:scrollbars="vertical"
         android:transcriptMode="alwaysScroll"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/productrow" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="188dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="View by Category"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:id="@+id/resultsCount"
+        android:layout_width="204dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:text="results"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scanIngredient" />
-
-    <Button
-        android:id="@+id/scanIngredient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:onClick="scanIngredient"
-        android:text="Scan Ingredients"
+        android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar1" />
+        app:layout_constraintTop_toBottomOf="@+id/resultsListView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,14 +3,17 @@ package com.example.ailbh.fypcoeliac;
 // Adapted from code by prakashpun - Text Recognition for Android using Google Mobile Vision
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -29,6 +32,8 @@ public class scanIngredient extends AppCompatActivity {
     private static final String TAG = "scanIngredient";
     private static final int requestPermissionID = 101;
 
+    private BottomNavigationView bottomNavView;
+
     private CameraSource mCameraSource;
     private SurfaceView mCameraView;
     private CameraSource.PictureCallback jpegCallback;
@@ -40,6 +45,43 @@ public class scanIngredient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_ingredient);
+
+        //set up navbar
+        bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavView);
+        bottomNavView.setSelectedItemId(R.id.nav_scan_id);
+
+        bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_search_id:
+                        //to search screen
+                        Intent intentSearch = new Intent(scanIngredient.this, MainActivity.class);
+                        startActivity(intentSearch);
+                        break;
+                    case R.id.nav_cat_id:
+                        //to category screen
+                        Intent intentCat = new Intent(scanIngredient.this, ViewCategoriesActivity.class);
+                        startActivity(intentCat);
+                        break;
+                    case R.id.nav_scan_id:
+                        //current screen
+                        break;
+                    case R.id.nav_info_id:
+                        //to info screen
+                        Intent intentInfo = new Intent(scanIngredient.this, InformationScreen.class);
+                        startActivity(intentInfo);
+                        break;
+                    case R.id.nav_profile_id:
+                        //to scanning screen
+                        Intent intentProf = new Intent(scanIngredient.this, UserProfile.class);
+                        startActivity(intentProf);
+                        break;
+                }
+                return false;
+            }
+        });
 
         mCameraView = findViewById(R.id.surfaceView);
 

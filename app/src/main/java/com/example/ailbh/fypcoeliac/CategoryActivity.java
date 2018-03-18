@@ -1,9 +1,12 @@
 package com.example.ailbh.fypcoeliac;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,6 +25,8 @@ public class CategoryActivity extends AppCompatActivity {
 
     private static final String TAG = "categoryAcivity";
 
+    private BottomNavigationView bottomNavView;
+
     private String category;
     private TextView categoryLabel;
     private FirebaseDatabase mFirebaseDatabase;
@@ -35,8 +40,49 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        //Set up navbar
+        bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavView);
+        bottomNavView.setSelectedItemId(R.id.nav_cat_id);
+
+        bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_search_id:
+                        //to search screen
+                        Intent intentSearch = new Intent(CategoryActivity.this, MainActivity.class);
+                        startActivity(intentSearch);
+                        break;
+                    case R.id.nav_cat_id:
+                        //to category screen
+                        Intent intentCat = new Intent(CategoryActivity.this, ViewCategoriesActivity.class);
+                        startActivity(intentCat);
+                        break;
+                    case R.id.nav_scan_id:
+                        //to scanning screen
+                        Intent intentScan = new Intent(CategoryActivity.this, scanIngredient.class);
+                        startActivity(intentScan);
+                        break;
+                    case R.id.nav_info_id:
+                        //to info screen
+                        Intent intentInfo = new Intent(CategoryActivity.this, InformationScreen.class);
+                        startActivity(intentInfo);
+                        break;
+                    case R.id.nav_profile_id:
+                        //to profile screen
+                        Intent intentProf = new Intent(CategoryActivity.this, UserProfile.class);
+                        startActivity(intentProf);
+                        break;
+                }
+                return false;
+            }
+        });
+
+        // get passed category
         Bundle extras = getIntent().getExtras();
         category = extras.getString("CATEGORY");
+
         // initialise category label and set text
         categoryLabel = findViewById(R.id.categoryLabel);
         categoryLabel.setText(category);

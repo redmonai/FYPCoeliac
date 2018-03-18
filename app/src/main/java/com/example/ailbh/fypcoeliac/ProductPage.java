@@ -1,12 +1,18 @@
 package com.example.ailbh.fypcoeliac;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class ProductPage extends AppCompatActivity {
 
     private static final String TAG = "ProductPage";
+
+    private BottomNavigationView bottomNavView;
 
     private String name;
     private String brand;
@@ -25,6 +31,45 @@ public class ProductPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
+
+        //Set up navbar
+        bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavView);
+        bottomNavView.setSelectedItemId(R.id.nav_cat_id);
+
+        bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_search_id:
+                        //to search screen
+                        Intent intentSearch = new Intent(ProductPage.this, MainActivity.class);
+                        startActivity(intentSearch);
+                        break;
+                    case R.id.nav_cat_id:
+                        //to category screen
+                        Intent intentCat = new Intent(ProductPage.this, ViewCategoriesActivity.class);
+                        startActivity(intentCat);
+                        break;
+                    case R.id.nav_scan_id:
+                        //to scanning screen
+                        Intent intentScan = new Intent(ProductPage.this, scanIngredient.class);
+                        startActivity(intentScan);
+                        break;
+                    case R.id.nav_info_id:
+                        //to info screen
+                        Intent intentInfo = new Intent(ProductPage.this, InformationScreen.class);
+                        startActivity(intentInfo);
+                        break;
+                    case R.id.nav_profile_id:
+                        //to profile screen
+                        Intent intentProf = new Intent(ProductPage.this, UserProfile.class);
+                        startActivity(intentProf);
+                        break;
+                }
+                return false;
+            }
+        });
 
         productLabel = findViewById(R.id.productLabel);
         productName = findViewById(R.id.productName);

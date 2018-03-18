@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ailbh.fypcoeliac">
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -11,11 +11,10 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/CoeliacAppTheme">
-        <activity android:name=".search_results" />
         <activity android:name=".InformationScreen" />
         <activity android:name=".ProductPage" />
         <activity android:name=".CategoryActivity" />
-        <activity android:name=".scanIngredient"></activity>
+        <activity android:name=".scanIngredient" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="ocr"/>
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr" />
+
+        <activity android:name=".UserProfile" />
+        <activity android:name=".ViewCategoriesActivity"></activity>
     </application>
 
 </manifest>

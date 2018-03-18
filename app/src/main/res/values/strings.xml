@@ -4,23 +4,24 @@
     <string name="search_field">Enter product name</string>
 
     <string name="app_title">Gluten Free Food Scanner</string>
+
+    <!-- navbar titles -->
+    <string name="nav_scan">Scan</string>
+    <string name="nav_info">Info</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_cat">Categories</string>
+
     <!-- Section titles -->
     <string name="home">Home</string>
+    <string name="gluten_info">What is Gluten?</string>
     <string name="coeliac_info">Coeliac Disease</string>
     <string name="gf_diet">Gluten Free Diet</string>
     <string name="labelling_info">Labelling</string>
     <string name="gf_oats">Gluten Free Oats</string>
     <string name="disclaimer">Disclaimer</string>
 
-    <!-- Toolbar titles when navigation menu item is selected -->
-    <string-array name="nav_item_activity_titles">
-        <item>Gluten Free Diet</item>
-        <item>Coeliac Disease</item>
-        <item>Labelling</item>
-        <item>Gluten Free Oats</item>
-        <item>Disclaimer</item>
-    </string-array>
-
+    <!-- Category labels -->
     <string-array name="food_categories">
         <item>Baking Ingredients &amp; Gluten Free Flours</item>
         <item>Biscuits</item>
@@ -30,28 +31,32 @@
         <item>Confectionary</item>
         <item>Crackers</item>
         <item>Dairy &amp; Non Dairy Alternatives</item>
-        <item>Drinks-Alcoholic</item>
-        <item>Drinks-Non Alcoholic</item>
+        <item>Drinks - Alcoholic</item>
+        <item>Drinks - Non Alcoholic</item>
         <item>Fats &amp; Oils</item>
         <item>Fish Products</item>
-        <item>Herbs, Spices &amp; Seasoning Mixes</item>
+        <item>Herbs, Spices, &amp; Seasoning Mixes</item>
         <item>Ice Cream &amp; Frozen Treats</item>
         <item>Meal Accompaniments</item>
         <item>Meat Products</item>
         <item>Medicines &amp; Supplements</item>
-        <item>Pasta, Noodles &amp; Rice</item>
+        <item>Pasta, Noodles, &amp; Rice</item>
         <item>Pizza &amp; Tortillas</item>
-        <item>Preserves, Nut Butters &amp; Spreads</item>
-        <item>Pure OAT Gluten Free Products</item>
+        <item>Preserves, Nut Butters, &amp; Spreads</item>
+        <item>Pure Oat Gluten Free Products</item>
         <item>Ready Meals</item>
         <item>Sauces</item>
         <item>Soups</item>
         <item>Supermarkets</item>
-        <item>Vegetables, Potato &amp; Fruit Products</item>
+        <item>Vegetables, Potato, &amp; Fruit Products</item>
         <item>Gluten Free Bakeries</item>
     </string-array>
 
     <!-- Info pages text -->
+    <string name="gluten_info_text">Gluten is the name of a protein found in wheat, barley, and rye.
+        Gluten acts as a glue, helping food to maintain its shape and stick together. Gluten
+        may also be found in oats due to cross contamination in the growing, harvesting, and
+        milling process.\n\n</string>
     <string name="gf_diet_info">There are many reasons for following a gluten free diet, including:\n
         \n\t\t• Coeliac disease\n\t\t• Non-coeliac gluten sensitivity \n\t\t• Wheat or gluten allergy\n\t\t• Irritable
         Bowel Syndrome\n\t\t• Autoimmune diseases, including \n\t\t\t rheumatoid arthritis and multiple
@@ -77,12 +82,13 @@
         change before the list can be updated. Therefore, coeliacs are always advised to check the
         label of any food products before they consume it.\n\n</string>
     <string name="gf_oats_info_text">Oats do not contain gluten but may be contaminated by gluten
-        containing grains during processing. Coeliacs should only consume oats that are labelled
+        containing grains during growing, harvesting, and processing. Coeliacs should only consume oats that are labelled
         gluten free.\n\nA minority of coeliacs are still unable to tolerate gluten free oats and so
         must exclude them from their diet.\n\n</string>
     <string name="disclaimer_text">The information provided in this application is as up-to-date as
         possible, but the most up-to-date information will always be found on a product’s ingredients
         label. \n\n<b>Always check the label of a food product before consuming it.\n\n</b></string>
+
     <string name="title_activity_main_navdrawer">main_navdrawer</string>
 
     <string-array name="forbidden_ingredients">
@@ -92,6 +98,8 @@
         <item>Barley</item>
         <item>Rye</item>
         <item>Oat</item>
+        <item>Spelt</item>
+        <item>Malt</item>
     </string-array>
 
     <string-array name="allowed_ingredients">
@@ -103,6 +111,7 @@
         <item>Gluten-Free Oats</item>
         <item>Gluten Free Oat Flour</item>
         <item>Gluten-Free Oat Flour</item>
+        <item>Malt Vinegar</item>
     </string-array>
 
     <string-array name="may_contain">
