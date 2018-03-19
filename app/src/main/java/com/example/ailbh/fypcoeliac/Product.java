@@ -10,6 +10,7 @@ public class Product {
     public String category;
     public String type;
     public String size;
+    public String key;
 
     public Product ()
     {
@@ -23,6 +24,11 @@ public class Product {
         this.category = category;
         this.type = type;
         this.size = size;
+    }
+
+    public void addKey(String key)
+    {
+        this.key = key;
     }
 }
 

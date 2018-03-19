@@ -123,7 +123,8 @@ public class CategoryActivity extends AppCompatActivity {
             {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Product newProd = snapshot.getValue(Product.class);
-                    if (category.equals(newProd.type.toString()))//(newProd.category.toString()).equals(category))
+                    newProd.key = snapshot.getKey().toString();
+                    if (category.equals(newProd.type.toString()))
                     {
                         resultsAdapter.add(newProd);
                     }

@@ -78,6 +78,8 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AuthUI.getInstance().signOut(UserProfile.this);
+                Intent intentMain = new Intent(UserProfile.this, MainActivity.class);
+                startActivity(intentMain);
             }
         });
 

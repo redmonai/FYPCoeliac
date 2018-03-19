@@ -180,6 +180,7 @@ public class MainActivity extends AppCompatActivity
             {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Product newProd = snapshot.getValue(Product.class);
+                    newProd.key = snapshot.getKey().toString();
                     //check if the product pulled from firebase matches the search string and,
                     // if not present in list, add it
                     if ((((newProd.name.trim().toLowerCase()).contains(searchString))
