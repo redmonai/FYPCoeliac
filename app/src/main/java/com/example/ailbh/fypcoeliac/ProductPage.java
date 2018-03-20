@@ -6,19 +6,30 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductPage extends AppCompatActivity {
 
     private static final String TAG = "ProductPage";
 
     private BottomNavigationView bottomNavView;
+    private Button addFavButton;
 
     private String name;
     private String brand;
     private String type;
     private String category;
     private String size;
+    private String key;
 
     private TextView productLabel;
     private TextView productName;
@@ -26,6 +37,9 @@ public class ProductPage extends AppCompatActivity {
     private TextView productType;
     private TextView productCategory;
     private TextView productSize;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,5 +99,17 @@ public class ProductPage extends AppCompatActivity {
         productType.setText(extras.getString("PRODUCT_TYPE"));
         productCategory.setText(extras.getString("PRODUCT_CAT"));
         productSize.setText(extras.getString("PRODUCT_SIZE"));
+        key = (extras.getString("PRODUCT_KEY"));
+
+        addFavButton = (Button) findViewById(R.id.addFavButton);
+        addFavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseDatabase = FirebaseDatabase.getInstance();
+                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                mDatabaseRef = mFirebaseDatabase.getReference().child("users").child(userID).child("favourites");
+                mDatabaseRef.child(key).setValue("true");
+            }
+        });
     }
 }

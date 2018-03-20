@@ -30,7 +30,7 @@
     <!-- Load page objects -->
     <ListView
         android:id="@+id/CategoryListView"
-        android:layout_width="358dp"
+        android:layout_width="360dp"
         android:layout_height="457dp"
         android:layout_above="@+id/mainNav"
         android:layout_centerHorizontal="true"
@@ -44,16 +44,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="188dp"
-        android:layout_height="35dp"
-        android:layout_alignLeft="@+id/searchIcon1"
-        android:layout_alignStart="@+id/searchIcon1"
-        android:layout_below="@+id/searchButton1"
-        android:layout_marginStart="28dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="View by Category"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include5" />
 

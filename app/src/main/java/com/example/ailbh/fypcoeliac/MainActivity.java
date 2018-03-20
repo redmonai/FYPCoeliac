@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra("PRODUCT_CAT", product.category);
                 intent.putExtra("PRODUCT_SIZE", product.size);
                 intent.putExtra("PRODUCT_TYPE", product.type);
+                intent.putExtra("PRODUCT_KEY", product.key);
 
                 startActivity(intent);
             }
