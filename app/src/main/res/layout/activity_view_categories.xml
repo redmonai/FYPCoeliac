@@ -30,6 +30,7 @@
     <!-- Load page objects -->
     <ListView
         android:id="@+id/CategoryListView"
+        style="@style/CatListView"
         android:layout_width="360dp"
         android:layout_height="457dp"
         android:layout_above="@+id/mainNav"
