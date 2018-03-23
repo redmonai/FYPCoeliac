@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     private EditText searchBar;
     private ListView resultsListView;
     private TextView resultsCountText;
+    private TextView noResultsText;
     private Button searchButton;
 
     //Search Elements
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity
         resultsListView.setAdapter(resultsAdapter);
         resultsCount = 0;
         resultsCountText = findViewById(R.id.resultsCount);
+        noResultsText = findViewById(R.id.noResults);
 
         //searchButton onClickListener to search the database
         searchButton.setOnClickListener(
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity
                     {
                         resultsList.clear();
                         resultsAdapter.notifyDataSetChanged();
+                        noResultsText.setVisibility(View.INVISIBLE);
+                        resultsCountText.setVisibility(View.INVISIBLE);
                         searchString = searchBar.getText().toString().trim().toLowerCase();
                         getData();
                     }
@@ -193,8 +197,13 @@ public class MainActivity extends AppCompatActivity
 
                 }
                 resultsCount = resultsList.size();
-                resultsCountText.setText(resultsCount + " results");
-                resultsCountText.setVisibility(View.VISIBLE);
+                if (resultsCount == 0) {
+                    noResultsText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    resultsCountText.setText(resultsCount + " results");
+                    resultsCountText.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

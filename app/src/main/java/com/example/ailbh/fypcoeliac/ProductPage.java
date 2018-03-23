@@ -111,10 +111,8 @@ public class ProductPage extends AppCompatActivity {
 
         addFavButton = (Button) findViewById(R.id.addFavButton);
         removeFavButton = (Button) findViewById(R.id.removeFavButton);
-//        addFavButton.setVisibility(View.VISIBLE);
-//        removeFavButton.setVisibility(View.INVISIBLE);
 
-        //determine if the product has been favourited or not
+        //determine if the product has been favourited or not and draw relevant button
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference().child("users").child(userID).child("favourites");

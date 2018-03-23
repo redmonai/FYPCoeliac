@@ -92,36 +92,69 @@
     <string name="title_activity_main_navdrawer">main_navdrawer</string>
 
     <string-array name="forbidden_ingredients">
-        <item>Cereals Containing Gluten</item>
-        <item>Gluten</item>
-        <item>Wheat</item>
-        <item>Barley</item>
-        <item>Rye</item>
-        <item>Oat</item>
-        <item>Spelt</item>
-        <item>Malt</item>
+        <item>cereals containing gluten</item>
+        <item>gluten</item>
+        <item>wheat</item>
+        <item>barley</item>
+        <item>rye</item>
+        <item>oat</item>
+        <item>spelt</item>
+        <item>malt</item>
     </string-array>
 
     <string-array name="allowed_ingredients">
-        <item>Gluten Free</item>
-        <item>Gluten-Free</item>
-        <item>Gluten Free Wheat Starch</item>
-        <item>Gluten-Free Wheat Starch</item>
-        <item>Gluten Free Oats</item>
-        <item>Gluten-Free Oats</item>
-        <item>Gluten Free Oat Flour</item>
-        <item>Gluten-Free Oat Flour</item>
-        <item>Malt Vinegar</item>
+        <item>gluten free</item>
+        <item>gluten-free</item>
+        <item>gluten free wheat starch</item>
+        <item>gluten-free wheat starch</item>
+        <item>gluten free oats</item>
+        <item>gluten-free oats</item>
+        <item>gluten free oat flour</item>
+        <item>gluten-free oat flour</item>
+        <item>malt vinegar</item>
     </string-array>
 
     <string-array name="may_contain">
-        <item>May contain traces of</item>
-        <item>May contain</item>
-        <item>Produced in a facility</item>
-        <item>Produced in</item>
-        <item>Produced on</item>
-        <item>Made in a factory</item>
+        <item>may contain traces of</item>
+        <item>may contain</item>
+        <item>produced in a facility</item>
+        <item>produced in</item>
+        <item>produced on</item>
+        <item>made in a factory</item>
     </string-array>
+
+    <string-array name="allergens">
+        <item>cereals containing gluten</item>
+        <item>gluten</item>
+        <item>wheat</item>
+        <item>barley</item>
+        <item>rye</item>
+        <item>oat</item>
+        <item>crustaceans</item>
+        <item>prawn</item>
+        <item>crab</item>
+        <item>lobster</item>
+        <item>egg</item>
+        <item>fish</item>
+        <item>peanut</item>
+        <item>soy</item>
+        <item>milk</item>
+        <item>lactose</item>
+        <item>nut</item>
+        <item>celery</item>
+        <item>mustard</item>
+        <item>sesame seeds</item>
+        <item>sulphur dioxide</item>
+        <item>sulphites</item>
+        <item>lupin</item>
+        <item>mollusc</item>
+        <item>clams</item>
+        <item>scallops</item>
+        <item>mussels</item>
+        <item>squid</item>
+        <item>oyster</item>
+    </string-array>
+
 
     <string name="action_settings">Settings</string>
 </resources>

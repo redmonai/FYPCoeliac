@@ -19,11 +19,11 @@
         android:background="@drawable/white_grey_border_top"
         app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
 
-    <!-- Load apge content -->
+    <!-- Load page content -->
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="375dp"
-        android:layout_height="435dp"
+        android:layout_height="484dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -36,21 +36,20 @@
     <TextView
         android:id="@+id/text_view"
         android:layout_width="375dp"
-        android:layout_height="95dp"
+        android:layout_height="465dp"
         android:layout_margin="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:gravity="center"
         android:scrollbars="vertical"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/mainNav"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        app:layout_constraintBottom_toBottomOf="@+id/scanButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surfaceView"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="textView" />
 
     <TextView
@@ -61,19 +60,21 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Use your camera to view product ingredients"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/takePictureButton"
+        android:id="@+id/scanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Take Picture"
-        android:visibility="invisible"
+        android:layout_marginTop="16dp"
+        android:text="Scan Ingredients"
+        app:layout_constraintBottom_toTopOf="@+id/mainNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surfaceView" />

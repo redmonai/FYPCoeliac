@@ -19,6 +19,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -39,7 +40,8 @@ public class scanIngredient extends AppCompatActivity {
     private CameraSource.PictureCallback jpegCallback;
 
     private TextView mTextView;
-//    private Button takePictureButton;
+    private StringBuilder stringBuilder;
+    private Button scanButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,21 +89,28 @@ public class scanIngredient extends AppCompatActivity {
 
         mTextView = findViewById(R.id.text_view);
         mTextView.setMovementMethod(new ScrollingMovementMethod());
-//        takePictureButton = findViewById(R.id.takePictureButton);
+        scanButton = findViewById(R.id.scanButton);
 
         startCameraSource();
 
-//        takePictureButton.setOnClickListener(
-//                new View.OnClickListener(){
-//                    @Override
-//                    public void onClick(View v)
-//                    {
-//                        System.out.println("On click listener");
-//                        //mCameraSource.takePicture(null, jpegCallback);
-//
-//                    }
-//                }
-//        );
+        scanButton.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v)
+                    {
+                        if (stringBuilder != null) {
+                            String ingredients = stringBuilder.toString();
+                            if (ingredients.toLowerCase().contains("ingredient")) {
+                                Intent intent = new Intent(getApplicationContext(), IngredientInterpreter.class);
+                                intent.putExtra("INGREDIENT_STRING", ingredients);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(scanIngredient.this, "Couldn't find ingredients, please try again", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+        );
     }
 
     @Override
@@ -214,13 +223,12 @@ public class scanIngredient extends AppCompatActivity {
                             @Override
                             public void run()
                             {
-                                StringBuilder stringBuilder = new StringBuilder();
+                                stringBuilder = new StringBuilder();
                                 for(int i=0; i<items.size(); i++)
                                 {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
-                                    stringBuilder.append("\n");
-                                    System.out.println(stringBuilder + "|");
+                                    //stringBuilder.append("\n");
                                 }
                                 mTextView.setText(stringBuilder.toString());
                             }
