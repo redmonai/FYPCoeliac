@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,6 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
 {
     private static final String TAG = "MainActivity";
+    private String viewSelected;
 
     //Firebase
     private FirebaseAuth mFirebaseAuth;
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewSelected = "nav_search_id";
 
         //login
         mUsername = "Anonymous";
@@ -158,6 +159,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = resultsList.get(position);
+                System.out.println("On click product key: " + product.key);
 
                 Intent intent =  new Intent(getApplicationContext(), ProductPage.class);
                 intent.putExtra("PRODUCT_NAME", product.name);
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra("PRODUCT_SIZE", product.size);
                 intent.putExtra("PRODUCT_TYPE", product.type);
                 intent.putExtra("PRODUCT_KEY", product.key);
-
+                intent.putExtra("SOURCE_PAGE", viewSelected);
                 startActivity(intent);
             }
         });

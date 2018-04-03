@@ -12,8 +12,10 @@ import android.widget.TextView;
 public class IngredientInterpreter extends AppCompatActivity {
 
     private BottomNavigationView bottomNavView;
+
     private String ingredients;
     private String trimIngredients;
+
     private TextView ingredientTextView;
     private TextView wheatTV;
     private TextView barleyTV;
@@ -21,11 +23,6 @@ public class IngredientInterpreter extends AppCompatActivity {
     private TextView oatsTV;
 
     private String startMatch = "ingredient";
-
-    private boolean wheat;
-    private boolean barley;
-    private boolean rye;
-    private boolean oats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,11 +98,13 @@ public class IngredientInterpreter extends AppCompatActivity {
     {
         if (trimIngredients.toLowerCase().contains(ingredient))
         {
-            textView.setText("Ingredients mention " + ingredient);
+            textView.setText("  Ingredients mention " + ingredient);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);
         }
         else
         {
-            textView.setText("Ingredients do not mention " + ingredient);
+            textView.setText("  Ingredients do not mention " + ingredient);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
         }
     }
 }

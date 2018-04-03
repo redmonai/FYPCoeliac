@@ -37,7 +37,6 @@ public class scanIngredient extends AppCompatActivity {
 
     private CameraSource mCameraSource;
     private SurfaceView mCameraView;
-    private CameraSource.PictureCallback jpegCallback;
 
     private TextView mTextView;
     private StringBuilder stringBuilder;

@@ -33,10 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
         android:text="@android:string/search_go"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="@+id/searchBar" />
 
     <EditText
         android:id="@+id/searchBar"
@@ -58,37 +57,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:contentDescription="search icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5"
+        app:layout_constraintTop_toTopOf="@+id/searchBar"
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
     <!-- Search Results -->
     <ListView
         android:id="@+id/resultsListView"
-        android:layout_width="362dp"
-        android:layout_height="416dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_above="@+id/resultsCount"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:scrollbars="vertical"
         android:transcriptMode="alwaysScroll"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/resultsCount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/productrow" />
 
     <TextView
         android:id="@+id/resultsCount"
         android:layout_width="204dp"
         android:layout_height="27dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:text="results"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -96,10 +94,10 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/mainNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultsListView" />
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/noResults"

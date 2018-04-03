@@ -24,6 +24,7 @@ import java.util.List;
 public class CategoryActivity extends AppCompatActivity {
 
     private static final String TAG = "categoryAcivity";
+    private String viewSelected;
 
     private BottomNavigationView bottomNavView;
 
@@ -39,6 +40,7 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        viewSelected = "nav_cat_id";
 
         //Set up navbar
         bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
@@ -107,6 +109,7 @@ public class CategoryActivity extends AppCompatActivity {
                 intent.putExtra("PRODUCT_SIZE", product.size);
                 intent.putExtra("PRODUCT_TYPE", product.type);
                 intent.putExtra("PRODUCT_KEY", product.key);
+                intent.putExtra("SOURCE_PAGE", viewSelected);
                 startActivity(intent);
             }
         });

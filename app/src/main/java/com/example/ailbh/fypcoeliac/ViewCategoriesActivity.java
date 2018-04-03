@@ -62,7 +62,7 @@ public class ViewCategoriesActivity extends AppCompatActivity {
 
         categoryListView = findViewById(R.id.CategoryListView);
         categories = getResources().getStringArray(R.array.food_categories);
-        catAdapter = new ArrayAdapter<String>(ViewCategoriesActivity.this, android.R.layout.simple_list_item_1, categories);
+        catAdapter = new ArrayAdapter<String>(ViewCategoriesActivity.this, R.layout.categoryrow, categories);
         categoryListView.setAdapter(catAdapter);
 
         categoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

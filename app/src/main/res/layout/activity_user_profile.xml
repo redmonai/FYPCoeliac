@@ -70,10 +70,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Favourites"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -84,11 +84,11 @@
 
     <ListView
         android:id="@+id/favouritesListView"
-        android:layout_width="360dp"
-        android:layout_height="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:scrollbars="vertical"
         android:transcriptMode="alwaysScroll"

@@ -18,9 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ProductPage extends AppCompatActivity {
 
     private static final String TAG = "ProductPage";
@@ -30,17 +27,11 @@ public class ProductPage extends AppCompatActivity {
     private Button removeFavButton;
     private Boolean favourite;
 
-    private String name;
-    private String brand;
-    private String type;
-    private String category;
-    private String size;
     private String key;
 
     private TextView productLabel;
     private TextView productName;
     private TextView productBrand;
-    private TextView productType;
     private TextView productCategory;
     private TextView productSize;
 
@@ -48,15 +39,21 @@ public class ProductPage extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private String userID;
 
+    private int resourceId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
 
+        Bundle extras = getIntent().getExtras();
+
         //Set up navbar
         bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
         BottomNavigationViewHelper.disableShiftMode(bottomNavView);
-        bottomNavView.setSelectedItemId(R.id.nav_cat_id);
+
+        resourceId = this.getResources().getIdentifier(extras.getString("SOURCE_PAGE"), "id", this.getPackageName());
+        bottomNavView.setSelectedItemId(resourceId);
 
         bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -97,13 +94,10 @@ public class ProductPage extends AppCompatActivity {
         productBrand = findViewById(R.id.productBrand);
         productSize = findViewById(R.id.productSize);
         productCategory = findViewById(R.id.productCategory);
-        productType = findViewById(R.id.productType);
 
-        Bundle extras = getIntent().getExtras();
         productLabel.setText((extras.getString("PRODUCT_BRAND") + " - " + extras.getString("PRODUCT_NAME")));
         productName.setText(extras.getString("PRODUCT_NAME"));
         productBrand.setText(extras.getString("PRODUCT_BRAND"));
-        productType.setText(extras.getString("PRODUCT_TYPE"));
         productCategory.setText(extras.getString("PRODUCT_CAT"));
         productSize.setText(extras.getString("PRODUCT_SIZE"));
         key = (extras.getString("PRODUCT_KEY"));
@@ -116,37 +110,30 @@ public class ProductPage extends AppCompatActivity {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference().child("users").child(userID).child("favourites");
-        System.out.println(mDatabaseRef);
-        System.out.println(key);
-        System.out.println(mDatabaseRef.child(key));
-        mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
-                    favourite = false;
-                    System.out.println("Favourite is false");
+        if (key != null) {
+            mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() == null) {
+                        favourite = false;
+                    } else {
+                        favourite = true;
+                    }
+                    if (favourite) {
+                        removeFavButton.setVisibility(View.VISIBLE);
+                        addFavButton.setVisibility(View.INVISIBLE);
+                    } else {
+                        addFavButton.setVisibility(View.VISIBLE);
+                        removeFavButton.setVisibility(View.INVISIBLE);
+                    }
                 }
-                else {
-                    favourite = true;
-                    System.out.println("Favourite is true");
-                }
-                if (favourite)
-                {
-                    removeFavButton.setVisibility(View.VISIBLE);
-                    addFavButton.setVisibility(View.INVISIBLE);
-                }
-                else
-                {
-                    addFavButton.setVisibility(View.VISIBLE);
-                    removeFavButton.setVisibility(View.INVISIBLE);
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("READ_FAILED", "Read failed");
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("READ_FAILED", "Read failed");
+                }
+            });
+        }
 
         addFavButton.setOnClickListener(new View.OnClickListener() {
             @Override

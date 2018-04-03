@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,7 @@ public class UserProfile extends AppCompatActivity {
     private Results_Adapter favouritesAdapter;
 
     private BottomNavigationView bottomNavView;
+    private String viewSelected;
 
     private TextView usernameText;
     private TextView useremailText;
@@ -43,6 +45,17 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        viewSelected = "nav_profile_id";
+
+        favouritesListView = findViewById(R.id.favouritesListView);
+
+        // Initialise results listview and its adapter
+        favourites = new ArrayList<Product>();
+        favouritesAdapter = new Results_Adapter(this, R.layout.productrow, favourites);
+        favouritesListView.setAdapter(favouritesAdapter);
+
+        favouritesIndex = new ArrayList<String>();
+        getFavourites();
 
         //set up navbar
         bottomNavView = (BottomNavigationView) findViewById(R.id.mainNav);
@@ -98,21 +111,12 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-        favouritesListView = findViewById(R.id.favouritesListView);
-
-        // Initialise results listview and its adapter
-        favourites = new ArrayList<Product>();
-        favouritesAdapter = new Results_Adapter(this, R.layout.productrow, favourites);
-        favouritesListView.setAdapter(favouritesAdapter);
-
-        favouritesIndex = new ArrayList<String>();
-        getFavourites();
-
         //resultsListView onClickListener to take user to product page
         favouritesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = favourites.get(position);
+                System.out.println("On click product key: " + product.key);
 
                 Intent intent =  new Intent(getApplicationContext(), ProductPage.class);
                 intent.putExtra("PRODUCT_NAME", product.name);
@@ -121,7 +125,7 @@ public class UserProfile extends AppCompatActivity {
                 intent.putExtra("PRODUCT_SIZE", product.size);
                 intent.putExtra("PRODUCT_TYPE", product.type);
                 intent.putExtra("PRODUCT_KEY", product.key);
-
+                intent.putExtra("SOURCE_PAGE", viewSelected);
                 startActivity(intent);
             }
         });
@@ -134,6 +138,7 @@ public class UserProfile extends AppCompatActivity {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mDatabaseRef = mFirebaseDatabase.getReference();
 
+        //find the keys of the user's favourites
         mDatabaseRef.child("users").child(userID).child("favourites").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,6 +155,7 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
+        //find the product records of the user favourites
         mDatabaseRef.child("food").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -158,10 +164,10 @@ public class UserProfile extends AppCompatActivity {
                     for (int i = 0; i < favouritesIndex.size(); i++) {
                         if (key.equals(favouritesIndex.get(i))) {
                             Product newProd = snapshot.getValue(Product.class);
+                            System.out.println("Product key on profile page: " + key);
                             favouritesAdapter.add(newProd);
                         }
                     }
-
                 }
             }
 

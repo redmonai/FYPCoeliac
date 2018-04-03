@@ -34,7 +34,7 @@
     <style name="CatListView" parent="@android:style/Widget.ListView">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">50sp</item>
     </style>
 
 </resources>
