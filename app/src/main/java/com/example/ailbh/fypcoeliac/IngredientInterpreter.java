@@ -17,6 +17,7 @@ public class IngredientInterpreter extends AppCompatActivity {
     private String trimIngredients;
 
     private TextView ingredientTextView;
+    private TextView glutenTV;
     private TextView wheatTV;
     private TextView barleyTV;
     private TextView ryeTV;
@@ -81,14 +82,14 @@ public class IngredientInterpreter extends AppCompatActivity {
         ingredientTextView.setMovementMethod(new ScrollingMovementMethod());
         ingredientTextView.setText(trimIngredients);
 
-        //todo intepret string
-
+        glutenTV = (TextView) findViewById(R.id.containsGlutenCheck);
         wheatTV = (TextView) findViewById(R.id.containsWheatCheck);
         barleyTV = (TextView) findViewById(R.id.containsBarleyCheck);
         ryeTV = (TextView) findViewById(R.id.containsRyeCheck);
         oatsTV = (TextView) findViewById(R.id.containsOatsCheck);
 
-        ingredientsCheck(wheatTV, "wheat");
+        glutenCheck(glutenTV);
+        ingredientsCheck(wheatTV, " wheat");
         ingredientsCheck(barleyTV, "barley");
         ingredientsCheck(ryeTV, "rye");
         ingredientsCheck(oatsTV, "oat");
@@ -104,6 +105,25 @@ public class IngredientInterpreter extends AppCompatActivity {
         else
         {
             textView.setText("  Ingredients do not mention " + ingredient);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
+        }
+    }
+
+    private void glutenCheck(TextView textView)
+    {
+        if (trimIngredients.toLowerCase().contains("gluten free") || trimIngredients.toLowerCase().contains("gluten-free"))
+        {
+            textView.setText("  Ingredients include gluten free label");
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
+        }
+        else if (trimIngredients.toLowerCase().contains("gluten"))
+        {
+            textView.setText("  Ingredients mention gluten");
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);
+        }
+        else
+        {
+            textView.setText("  Ingredients do not mention gluten");
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
         }
     }
