@@ -116,7 +116,6 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = favourites.get(position);
-                System.out.println("On click product key: " + product.key);
 
                 Intent intent =  new Intent(getApplicationContext(), ProductPage.class);
                 intent.putExtra("PRODUCT_NAME", product.name);
@@ -164,7 +163,7 @@ public class UserProfile extends AppCompatActivity {
                     for (int i = 0; i < favouritesIndex.size(); i++) {
                         if (key.equals(favouritesIndex.get(i))) {
                             Product newProd = snapshot.getValue(Product.class);
-                            System.out.println("Product key on profile page: " + key);
+                            newProd.addKey(snapshot.getKey().toString());
                             favouritesAdapter.add(newProd);
                         }
                     }

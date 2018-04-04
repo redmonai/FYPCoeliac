@@ -110,30 +110,29 @@ public class ProductPage extends AppCompatActivity {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference().child("users").child(userID).child("favourites");
-        if (key != null) {
-            mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() == null) {
-                        favourite = false;
-                    } else {
-                        favourite = true;
-                    }
-                    if (favourite) {
-                        removeFavButton.setVisibility(View.VISIBLE);
-                        addFavButton.setVisibility(View.INVISIBLE);
-                    } else {
-                        addFavButton.setVisibility(View.VISIBLE);
-                        removeFavButton.setVisibility(View.INVISIBLE);
-                    }
+        mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    favourite = false;
+                } else {
+                    favourite = true;
                 }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.d("READ_FAILED", "Read failed");
+                if (favourite) {
+                    removeFavButton.setVisibility(View.VISIBLE);
+                    addFavButton.setVisibility(View.INVISIBLE);
+                } else {
+                    addFavButton.setVisibility(View.VISIBLE);
+                    removeFavButton.setVisibility(View.INVISIBLE);
                 }
-            });
-        }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("READ_FAILED", "Read failed");
+            }
+        });
 
         addFavButton.setOnClickListener(new View.OnClickListener() {
             @Override

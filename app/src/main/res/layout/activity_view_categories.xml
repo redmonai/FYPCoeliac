@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.ailbh.fypcoeliac.ViewCategoriesActivity">
 
-    <!-- Load the toolbar here -->
-    <include
-        android:id="@+id/include5"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="59dp" />
+    <!--&lt;!&ndash; Load the toolbar here &ndash;&gt;-->
+    <!--<include-->
+        <!--android:id="@+id/include5"-->
+        <!--layout="@layout/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="59dp" />-->
 
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
@@ -25,7 +25,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/white_grey_border_top"
-        app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
+        app:menu="@menu/nav_items">
+    </android.support.design.widget.BottomNavigationView>
 
     <!-- Load page objects -->
     <ListView
@@ -56,9 +57,10 @@
         android:layout_marginTop="16dp"
         android:text="View by Category"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="bold"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

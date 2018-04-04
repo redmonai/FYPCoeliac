@@ -7,11 +7,11 @@
     tools:context="com.example.ailbh.fypcoeliac.CategoryActivity">
 
     <!-- Load the toolbar -->
-    <include
-        android:id="@+id/include5"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--<include-->
+        <!--android:id="@+id/include5"-->
+        <!--layout="@layout/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
@@ -52,8 +52,9 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorAccent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.ailbh.fypcoeliac.MainActivity">
 
-    <!-- Load the toolbar here -->
-    <include
-        android:id="@+id/include5"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--&lt;!&ndash; Load the toolbar here &ndash;&gt;-->
+    <!--<include-->
+    <!--android:id="@+id/include5"-->
+    <!--layout="@layout/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
 
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
@@ -30,6 +30,7 @@
     <!-- Search bar -->
     <Button
         android:id="@+id/searchButton"
+        style="@style/FirebaseUI.Button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
@@ -50,7 +51,7 @@
         android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/searchButton"
         app:layout_constraintStart_toEndOf="@+id/searchIcon"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/searchIcon"
@@ -102,11 +103,7 @@
     <TextView
         android:id="@+id/noResults"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="26dp"
         android:text="No Results Found"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -114,10 +111,10 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/mainNav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintBottom_toTopOf="@+id/resultsListView"
+        app:layout_constraintEnd_toStartOf="@+id/resultsListView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/resultsListView"
+        app:layout_constraintTop_toBottomOf="@+id/resultsListView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -86,7 +86,7 @@ public class scanIngredient extends AppCompatActivity {
 
         mCameraView = findViewById(R.id.surfaceView);
 
-        mTextView = findViewById(R.id.text_view);
+        mTextView = findViewById(R.id.ingredientText);
         mTextView.setMovementMethod(new ScrollingMovementMethod());
         scanButton = findViewById(R.id.scanButton);
 

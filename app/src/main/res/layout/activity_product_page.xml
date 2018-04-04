@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.ailbh.fypcoeliac.ProductPage">
 
-    <!-- Load the toolbar here -->
-    <include
-        android:id="@+id/include5"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--&lt;!&ndash; Load the toolbar here &ndash;&gt;-->
+    <!--<include-->
+        <!--android:id="@+id/include5"-->
+        <!--layout="@layout/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
@@ -43,7 +43,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/productName"
@@ -159,6 +159,7 @@
 
     <Button
         android:id="@+id/addFavButton"
+        style="@style/FirebaseUI.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -172,6 +173,7 @@
 
     <Button
         android:id="@+id/removeFavButton"
+        style="@style/FirebaseUI.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
