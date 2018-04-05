@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView bottomNavView;
     private EditText searchBar;
     private ListView resultsListView;
+    private TextView resultsLabel;
     private TextView resultsCountText;
     private TextView noResultsText;
     private Button searchButton;
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity
         resultsCount = 0;
         resultsCountText = findViewById(R.id.resultsCount);
         noResultsText = findViewById(R.id.noResults);
+        resultsLabel = findViewById(R.id.resultsLabel);
 
         //searchButton onClickListener to search the database
         searchButton.setOnClickListener(
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity
                         resultsAdapter.notifyDataSetChanged();
                         noResultsText.setVisibility(View.INVISIBLE);
                         resultsCountText.setVisibility(View.INVISIBLE);
+                        resultsLabel.setVisibility(View.INVISIBLE);
                         searchString = searchBar.getText().toString().trim().toLowerCase();
                         getData();
                     }
@@ -159,8 +162,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = resultsList.get(position);
-                System.out.println("On click product key: " + product.key);
-
                 Intent intent =  new Intent(getApplicationContext(), ProductPage.class);
                 intent.putExtra("PRODUCT_NAME", product.name);
                 intent.putExtra("PRODUCT_BRAND", product.brand);
@@ -205,6 +206,7 @@ public class MainActivity extends AppCompatActivity
                 else {
                     resultsCountText.setText(resultsCount + " results");
                     resultsCountText.setVisibility(View.VISIBLE);
+                    resultsLabel.setVisibility(View.VISIBLE);
                 }
             }
 

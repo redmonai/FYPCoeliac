@@ -90,16 +90,16 @@ public class IngredientInterpreter extends AppCompatActivity {
 
         glutenCheck(glutenTV);
         ingredientsCheck(wheatTV, " wheat");
-        ingredientsCheck(barleyTV, "barley");
-        ingredientsCheck(ryeTV, "rye");
-        ingredientsCheck(oatsTV, "oat");
+        ingredientsCheck(barleyTV, " barley");
+        ingredientsCheck(ryeTV, " rye");
+        ingredientsCheck(oatsTV, " oat");
     }
 
     private void ingredientsCheck(TextView textView, String ingredient)
     {
         if (trimIngredients.toLowerCase().contains(ingredient))
         {
-            textView.setText("  Ingredients mention " + ingredient);
+            textView.setText("  Ingredients mention" + ingredient);
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);
         }
         else

@@ -64,22 +64,21 @@
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
     <!-- Search Results -->
-    <ListView
-        android:id="@+id/resultsListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@+id/resultsCount"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
+    <TextView
+        android:id="@+id/resultsLabel"
+        android:layout_width="365dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:scrollbars="vertical"
-        android:transcriptMode="alwaysScroll"
-        app:layout_constraintBottom_toTopOf="@+id/resultsCount"
+        android:text="RESULTS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        tools:listitem="@layout/productrow" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <TextView
         android:id="@+id/resultsCount"
@@ -116,5 +115,24 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/resultsListView"
         app:layout_constraintTop_toBottomOf="@+id/resultsListView" />
+
+    <ListView
+        android:id="@+id/resultsListView"
+        android:layout_width="357dp"
+        android:layout_height="0dp"
+        android:layout_above="@+id/resultsCount"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        android:transcriptMode="alwaysScroll"
+        app:layout_constraintBottom_toTopOf="@+id/resultsCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultsLabel"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/productrow" />
 
 </android.support.constraint.ConstraintLayout>
