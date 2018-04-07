@@ -21,6 +21,8 @@
     <string name="gf_oats">Gluten Free Oats</string>
     <string name="disclaimer">Disclaimer</string>
 
+    <string name="instructions">Press the button when ingredients appear on the screen</string>
+
     <!-- Category labels -->
     <string-array name="food_categories">
         <item>Baking Ingredients &amp; Gluten Free Flours</item>

@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.ailbh.fypcoeliac.IngredientInterpreter">
 
-    <!-- Load the toolbar -->
-    <include
-        android:id="@+id/include5"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/mainNav"
@@ -42,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/containsGlutenCheck"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/containsGlutenCheck"
@@ -56,6 +49,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/containsWheatCheck"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

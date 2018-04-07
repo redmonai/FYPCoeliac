@@ -24,11 +24,11 @@ public class ProductPage extends AppCompatActivity {
 
     private BottomNavigationView bottomNavView;
     private Button addFavButton;
-    private Button removeFavButton;
     private Boolean favourite;
 
     private String key;
 
+    private TextView categoryLabel;
     private TextView productLabel;
     private TextView productName;
     private TextView productBrand;
@@ -93,18 +93,18 @@ public class ProductPage extends AppCompatActivity {
         productName = findViewById(R.id.productName);
         productBrand = findViewById(R.id.productBrand);
         productSize = findViewById(R.id.productSize);
-        productCategory = findViewById(R.id.productCategory);
-
+        productCategory = findViewById(R.id.productType);
+        categoryLabel = findViewById(R.id.categoryLabel);
         productLabel.setText((extras.getString("PRODUCT_BRAND") + " - " + extras.getString("PRODUCT_NAME")));
         productName.setText(extras.getString("PRODUCT_NAME"));
         productBrand.setText(extras.getString("PRODUCT_BRAND"));
         productCategory.setText(extras.getString("PRODUCT_CAT"));
         productSize.setText(extras.getString("PRODUCT_SIZE"));
+        categoryLabel.setText(extras.getString("PRODUCT_TYPE"));
         key = (extras.getString("PRODUCT_KEY"));
 
 
         addFavButton = (Button) findViewById(R.id.addFavButton);
-        removeFavButton = (Button) findViewById(R.id.removeFavButton);
 
         //determine if the product has been favourited or not and draw relevant button
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -113,19 +113,12 @@ public class ProductPage extends AppCompatActivity {
         mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
+                if (dataSnapshot.getValue() == null || dataSnapshot.getValue().toString().equals("false")) {
                     favourite = false;
                 } else {
                     favourite = true;
                 }
-
-                if (favourite) {
-                    removeFavButton.setVisibility(View.VISIBLE);
-                    addFavButton.setVisibility(View.INVISIBLE);
-                } else {
-                    addFavButton.setVisibility(View.VISIBLE);
-                    removeFavButton.setVisibility(View.INVISIBLE);
-                }
+                updateFaveButton();
             }
 
             @Override
@@ -137,19 +130,30 @@ public class ProductPage extends AppCompatActivity {
         addFavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabaseRef.child(key).setValue("true");
-                addFavButton.setVisibility(View.INVISIBLE);
-                removeFavButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-        removeFavButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDatabaseRef.child(key).setValue("false");
-                removeFavButton.setVisibility(View.INVISIBLE);
-                addFavButton.setVisibility(View.VISIBLE);
+                if (!favourite) {
+                    //add to favourites
+                    mDatabaseRef.child(key).setValue("true");
+                    favourite = true;
+                    updateFaveButton();
+                }
+                else
+                {
+                    //remove from favourites
+                    mDatabaseRef.child(key).setValue("false");
+                    favourite = false;
+                    updateFaveButton();
+                }
             }
         });
     }
+
+    public void updateFaveButton()
+    {
+        if (favourite) {
+            addFavButton.setText("Remove from Favourites");
+        } else {
+            addFavButton.setText("Add to Favourites");
+        }
+    }
+
 }

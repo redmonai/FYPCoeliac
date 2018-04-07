@@ -60,12 +60,13 @@
 
     <TextView
         android:id="@+id/instructions"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Use your camera to view product ingredients"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="@string/instructions"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
         app:layout_constraintBottom_toTopOf="@+id/surfaceView"
         app:layout_constraintEnd_toEndOf="parent"

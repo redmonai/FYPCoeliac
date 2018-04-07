@@ -11,10 +11,16 @@ import android.widget.TextView;
 
 public class IngredientInterpreter extends AppCompatActivity {
 
+    private static final String wheat = "wheat";
+    private static final String barley = "barley";
+    private static final String rye = "rye";
+    private static final String oat = "oat";
+
     private BottomNavigationView bottomNavView;
 
     private String ingredients;
     private String trimIngredients;
+    private String lowerIngredients;
 
     private TextView ingredientTextView;
     private TextView glutenTV;
@@ -75,12 +81,13 @@ public class IngredientInterpreter extends AppCompatActivity {
         int startPos = ingredients.toLowerCase().indexOf(startMatch);
 
         trimIngredients = ingredients.substring(startPos);
-        System.out.println("trimmed ingredient string " + trimIngredients);
 
         //display string
         ingredientTextView = (TextView) findViewById(R.id.ingredientTextView);
         ingredientTextView.setMovementMethod(new ScrollingMovementMethod());
         ingredientTextView.setText(trimIngredients);
+
+        lowerIngredients = trimIngredients.toLowerCase();
 
         glutenTV = (TextView) findViewById(R.id.containsGlutenCheck);
         wheatTV = (TextView) findViewById(R.id.containsWheatCheck);
@@ -89,17 +96,17 @@ public class IngredientInterpreter extends AppCompatActivity {
         oatsTV = (TextView) findViewById(R.id.containsOatsCheck);
 
         glutenCheck(glutenTV);
-        ingredientsCheck(wheatTV, " wheat");
-        ingredientsCheck(barleyTV, " barley");
-        ingredientsCheck(ryeTV, " rye");
-        ingredientsCheck(oatsTV, " oat");
+        wheatCheck(wheatTV);
+        ingredientsCheck(barleyTV, barley);
+        ingredientsCheck(ryeTV, rye);
+        ingredientsCheck(oatsTV, oat);
     }
 
     private void ingredientsCheck(TextView textView, String ingredient)
     {
-        if (trimIngredients.toLowerCase().contains(ingredient))
+        if (lowerIngredients.contains(ingredient))
         {
-            textView.setText("  Ingredients mention" + ingredient);
+            textView.setText("  Ingredients mention " + ingredient);
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);
         }
         else
@@ -109,14 +116,28 @@ public class IngredientInterpreter extends AppCompatActivity {
         }
     }
 
+    private void wheatCheck(TextView textView)
+    {
+        if (lowerIngredients.contains(" " + wheat))
+        {
+            textView.setText("  Ingredients mention wheat");
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);
+        }
+        else
+        {
+            textView.setText("  Ingredients do not mention wheat");
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
+        }
+    }
+
     private void glutenCheck(TextView textView)
     {
-        if (trimIngredients.toLowerCase().contains("gluten free") || trimIngredients.toLowerCase().contains("gluten-free"))
+        if (lowerIngredients.contains("gluten free") || trimIngredients.toLowerCase().contains("gluten-free"))
         {
             textView.setText("  Ingredients include gluten free label");
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.check38, 0, 0, 0);
         }
-        else if (trimIngredients.toLowerCase().contains("gluten"))
+        else if (lowerIngredients.contains("gluten"))
         {
             textView.setText("  Ingredients mention gluten");
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.x38, 0, 0, 0);

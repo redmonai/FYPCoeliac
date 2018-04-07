@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.ailbh.fypcoeliac.ViewCategoriesActivity">
 
-    <!--&lt;!&ndash; Load the toolbar here &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/include5"-->
-        <!--layout="@layout/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="59dp" />-->
-
     <!-- Load the navbar -->
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/mainNav"
