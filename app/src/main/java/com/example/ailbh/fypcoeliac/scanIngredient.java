@@ -227,7 +227,6 @@ public class scanIngredient extends AppCompatActivity {
                                 {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
-                                    //stringBuilder.append("\n");
                                 }
                                 mTextView.setText(stringBuilder.toString());
                             }

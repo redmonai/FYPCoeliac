@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/searchBar"
-        android:layout_width="225dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_above="@+id/CategoryListView"
         android:layout_marginTop="16dp"

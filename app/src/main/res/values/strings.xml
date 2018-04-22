@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FYPCoeliac</string>
 
-    <string name="search_field">Enter product name</string>
+    <string name="search_field">Enter product name or brand</string>
 
     <string name="app_title">Gluten Free Food Scanner</string>
 

@@ -138,7 +138,8 @@ public class UserProfile extends AppCompatActivity {
         mDatabaseRef = mFirebaseDatabase.getReference();
 
         //find the keys of the user's favourites
-        mDatabaseRef.child("users").child(userID).child("favourites").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child("users").child(userID).child("favourites")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

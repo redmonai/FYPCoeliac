@@ -105,6 +105,7 @@ public class ProductPage extends AppCompatActivity {
 
 
         addFavButton = (Button) findViewById(R.id.addFavButton);
+        favourite = false;
 
         //determine if the product has been favourited or not and draw relevant button
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -113,9 +114,7 @@ public class ProductPage extends AppCompatActivity {
         mDatabaseRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null || dataSnapshot.getValue().toString().equals("false")) {
-                    favourite = false;
-                } else {
+                if (dataSnapshot.getValue() != null || !dataSnapshot.getValue().toString().equals("false")) {
                     favourite = true;
                 }
                 updateFaveButton();
